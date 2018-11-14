@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B931564219BC705003D6263 /* MapData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B931562219BC705003D6263 /* MapData.xcdatamodeld */; };
+		0B93156B219BE06A003D6263 /* ev.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B93156A219BE06A003D6263 /* ev.json */; };
+		0B93156D219BE490003D6263 /* JsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93156C219BE490003D6263 /* JsonUtils.swift */; };
 		CE6FA541219214A1007404C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA540219214A1007404C4 /* AppDelegate.swift */; };
 		CE6FA543219214A1007404C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA542219214A1007404C4 /* ViewController.swift */; };
 		CE6FA546219214A1007404C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA544219214A1007404C4 /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B931563219BC705003D6263 /* MapData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapData.xcdatamodel; sourceTree = "<group>"; };
+		0B93156A219BE06A003D6263 /* ev.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ev.json; sourceTree = "<group>"; };
+		0B93156C219BE490003D6263 /* JsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtils.swift; sourceTree = "<group>"; };
 		0DD931FFDCA47D132A446419 /* Pods_ios_googlemaps_view.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_googlemaps_view.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3864A029F011886B8CF46F1A /* Pods-ios-googlemaps-view.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-googlemaps-view.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-googlemaps-view/Pods-ios-googlemaps-view.release.xcconfig"; sourceTree = "<group>"; };
 		B318F3EFF66DC707D1DF4BE6 /* Pods-ios-googlemaps-view.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-googlemaps-view.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-googlemaps-view/Pods-ios-googlemaps-view.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +90,9 @@
 				CE6FA547219214A6007404C4 /* Assets.xcassets */,
 				CE6FA549219214A6007404C4 /* LaunchScreen.storyboard */,
 				CE6FA54C219214A6007404C4 /* Info.plist */,
+				0B931562219BC705003D6263 /* MapData.xcdatamodeld */,
+				0B93156A219BE06A003D6263 /* ev.json */,
+				0B93156C219BE490003D6263 /* JsonUtils.swift */,
 			);
 			path = "ios-googlemaps-view";
 			sourceTree = "<group>";
@@ -150,6 +159,7 @@
 			files = (
 				CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */,
 				CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */,
+				0B93156B219BE06A003D6263 /* ev.json in Resources */,
 				CE6FA546219214A1007404C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,16 +172,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios-googlemaps-view/Pods-ios-googlemaps-view-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
@@ -186,15 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ios-googlemaps-view-checkManifestLockResult.txt",
 			);
@@ -212,6 +214,8 @@
 			files = (
 				CE6FA543219214A1007404C4 /* ViewController.swift in Sources */,
 				CE6FA541219214A1007404C4 /* AppDelegate.swift in Sources */,
+				0B931564219BC705003D6263 /* MapData.xcdatamodeld in Sources */,
+				0B93156D219BE490003D6263 /* JsonUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SUQQ8935B;
 				INFOPLIST_FILE = "ios-googlemaps-view/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SUQQ8935B;
 				INFOPLIST_FILE = "ios-googlemaps-view/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,6 +419,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B931562219BC705003D6263 /* MapData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B931563219BC705003D6263 /* MapData.xcdatamodel */,
+			);
+			currentVersion = 0B931563219BC705003D6263 /* MapData.xcdatamodel */;
+			path = MapData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE6FA535219214A1007404C4 /* Project object */;
 }

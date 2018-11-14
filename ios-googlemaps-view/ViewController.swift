@@ -9,14 +9,19 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import CoreData
 
 class ViewController: UIViewController {
 
+
+    @IBOutlet weak var zoomOutButton: UIButton!
+    @IBOutlet weak var zoomInButton: UIButton!
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var placesClient: GMSPlacesClient!
     var zoom : Float = 15.0
     var marker = GMSMarker()
+    var locations: [NSManagedObject] = []
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -44,6 +49,75 @@ class ViewController: UIViewController {
         // places client
         placesClient = GMSPlacesClient.shared()
         
+        loadCoreData()
+        
+    }
+    
+    func getViewContext() -> NSManagedObjectContext? {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return nil
+        }
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    func loadCoreData(){
+        
+        if let managedContext = getViewContext(){
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Location")
+            
+            do {
+                locations = try managedContext.fetch(fetchRequest)
+                if (locations.count==0){
+                    createCoreData()
+                    locations = try managedContext.fetch(fetchRequest)
+                }
+                loadPlaces(locations)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+        }
+    }
+    
+    func createCoreData(){
+        
+        if let managedContext = getViewContext(){
+            let placesEv = getJsonFromFile(name: "ev")
+            for place in placesEv{
+                let p = place as! NSDictionary
+                let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedContext)!
+                let newLocation = NSManagedObject(entity: entity, insertInto: managedContext)
+                newLocation.setValue(p.value(forKey: "name") as! String, forKeyPath:"name")
+                newLocation.setValue(p.value(forKey: "latitude") as! Double, forKeyPath:"latitude")
+                newLocation.setValue(p.value(forKey: "longitude") as! Double, forKeyPath:"longitude")
+                newLocation.setValue("Electric Vehicle Charge", forKeyPath:"type")
+                newLocation.setValue(p.value(forKey: "description") as! String, forKeyPath:"desc")
+                do {
+                    try managedContext.save()
+                    locations.append(newLocation)
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+            }
+            
+        }
+        
+        
+    }
+    
+    func loadPlaces(_ places: [NSManagedObject] ){
+        print("Loading places (\(places.count)")
+        for place in places {
+            let latitude = place.value(forKeyPath:"latitude") as! Double
+            let longitude = place.value(forKeyPath:"longitude") as! Double
+            print("Place \(place) \(latitude):\(longitude)")
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            marker.title = place.value(forKeyPath:"name") as? String
+            marker.snippet = (place.value(forKeyPath:"type") as? String)! + "\n" + (place.value(forKeyPath:"desc") as? String)!
+            marker.icon = GMSMarker.markerImage(with: UIColor.blue)
+            marker.map = mapView
+        }
     }
 
     
@@ -76,6 +150,17 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.mapView.animate(toZoom: self.zoom + 1.0)
+        }
+    }
+    
+    @IBAction func zoomClick(_ sender: UIButton) {
+        if (sender.isEqual(zoomInButton)){
+            self.zoom += 1
+            self.mapView.animate(toZoom: self.zoom)
+        }
+        if (sender.isEqual(zoomOutButton)){
+            self.zoom -= 1
+            self.mapView.animate(toZoom: self.zoom)
         }
     }
 
