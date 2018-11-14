@@ -82,16 +82,20 @@ class ViewController: UIViewController {
     func createCoreData(){
         
         if let managedContext = getViewContext(){
-            let placesEv = getJsonFromFile(name: "ev")
+            let placesEv = getJsonFromFile(name: "evcharge")
             for place in placesEv{
                 let p = place as! NSDictionary
                 let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedContext)!
                 let newLocation = NSManagedObject(entity: entity, insertInto: managedContext)
-                newLocation.setValue(p.value(forKey: "name") as! String, forKeyPath:"name")
-                newLocation.setValue(p.value(forKey: "latitude") as! Double, forKeyPath:"latitude")
-                newLocation.setValue(p.value(forKey: "longitude") as! Double, forKeyPath:"longitude")
+                var name = (p.value(forKey: "LocationTag"))
+                if (name == nil || NSNull.isEqual(name)){
+                    name = "Electric Vehicle Charge"
+                }
+                newLocation.setValue(name , forKeyPath:"name")
+                newLocation.setValue(p.value(forKey: "Lat") as! Double, forKeyPath:"latitude")
+                newLocation.setValue(p.value(forKey: "Long") as! Double, forKeyPath:"longitude")
                 newLocation.setValue("Electric Vehicle Charge", forKeyPath:"type")
-                newLocation.setValue(p.value(forKey: "description") as! String, forKeyPath:"desc")
+                newLocation.setValue(p.value(forKey: "LocName") as! String, forKeyPath:"desc")
                 do {
                     try managedContext.save()
                     locations.append(newLocation)
