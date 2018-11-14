@@ -68,3 +68,18 @@ func parseDictionary(data: Data, key: String, items: String) -> NSArray {
     }
     return NSArray()
 }
+
+
+extension NSDictionary {
+    
+    func safeString(forKey: String, defaultValue: String) -> String{
+        if let result=self.value(forKey: forKey){
+            if (result is NSNull){
+                return defaultValue
+            }
+            return result as! String
+        }else{
+            return defaultValue
+        }
+    }
+}

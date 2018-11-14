@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B931564219BC705003D6263 /* MapData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B931562219BC705003D6263 /* MapData.xcdatamodeld */; };
-		0B93156B219BE06A003D6263 /* ev.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B93156A219BE06A003D6263 /* ev.json */; };
 		0B93156D219BE490003D6263 /* JsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93156C219BE490003D6263 /* JsonUtils.swift */; };
 		0B93156F219BEDFC003D6263 /* evcharge.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B93156E219BEDFC003D6263 /* evcharge.json */; };
 		CE6FA541219214A1007404C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA540219214A1007404C4 /* AppDelegate.swift */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		0B931563219BC705003D6263 /* MapData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MapData.xcdatamodel; sourceTree = "<group>"; };
-		0B93156A219BE06A003D6263 /* ev.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ev.json; sourceTree = "<group>"; };
 		0B93156C219BE490003D6263 /* JsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtils.swift; sourceTree = "<group>"; };
 		0B93156E219BEDFC003D6263 /* evcharge.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = evcharge.json; sourceTree = "<group>"; };
 		0DD931FFDCA47D132A446419 /* Pods_ios_googlemaps_view.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_googlemaps_view.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +91,6 @@
 				CE6FA549219214A6007404C4 /* LaunchScreen.storyboard */,
 				CE6FA54C219214A6007404C4 /* Info.plist */,
 				0B931562219BC705003D6263 /* MapData.xcdatamodeld */,
-				0B93156A219BE06A003D6263 /* ev.json */,
 				0B93156C219BE490003D6263 /* JsonUtils.swift */,
 				0B93156E219BEDFC003D6263 /* evcharge.json */,
 			);
@@ -162,7 +159,6 @@
 			files = (
 				CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */,
 				CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */,
-				0B93156B219BE06A003D6263 /* ev.json in Resources */,
 				CE6FA546219214A1007404C4 /* Main.storyboard in Resources */,
 				0B93156F219BEDFC003D6263 /* evcharge.json in Resources */,
 			);

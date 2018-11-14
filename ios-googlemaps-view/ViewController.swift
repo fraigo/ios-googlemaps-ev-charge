@@ -87,15 +87,13 @@ class ViewController: UIViewController {
                 let p = place as! NSDictionary
                 let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedContext)!
                 let newLocation = NSManagedObject(entity: entity, insertInto: managedContext)
-                var name = (p.value(forKey: "LocationTag"))
-                if (name == nil || NSNull.isEqual(name)){
-                    name = "Electric Vehicle Charge"
-                }
+                let name = p.safeString(forKey: "LocationTag", defaultValue: "EV Charge")
+                let locName = p.safeString(forKey: "LocName", defaultValue: "No location descr.")
                 newLocation.setValue(name , forKeyPath:"name")
                 newLocation.setValue(p.value(forKey: "Lat") as! Double, forKeyPath:"latitude")
                 newLocation.setValue(p.value(forKey: "Long") as! Double, forKeyPath:"longitude")
                 newLocation.setValue("Electric Vehicle Charge", forKeyPath:"type")
-                newLocation.setValue(p.value(forKey: "LocName") as! String, forKeyPath:"desc")
+                newLocation.setValue(locName, forKeyPath:"desc")
                 do {
                     try managedContext.save()
                     locations.append(newLocation)
