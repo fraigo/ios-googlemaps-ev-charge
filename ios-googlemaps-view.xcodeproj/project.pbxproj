@@ -11,7 +11,7 @@
 		0B93156D219BE490003D6263 /* JsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93156C219BE490003D6263 /* JsonUtils.swift */; };
 		0B93156F219BEDFC003D6263 /* evcharge.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B93156E219BEDFC003D6263 /* evcharge.json */; };
 		CE6FA541219214A1007404C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA540219214A1007404C4 /* AppDelegate.swift */; };
-		CE6FA543219214A1007404C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA542219214A1007404C4 /* ViewController.swift */; };
+		CE6FA543219214A1007404C4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6FA542219214A1007404C4 /* MapViewController.swift */; };
 		CE6FA546219214A1007404C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA544219214A1007404C4 /* Main.storyboard */; };
 		CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA547219214A6007404C4 /* Assets.xcassets */; };
 		CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA549219214A6007404C4 /* LaunchScreen.storyboard */; };
@@ -28,7 +28,7 @@
 		B318F3EFF66DC707D1DF4BE6 /* Pods-ios-googlemaps-view.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-googlemaps-view.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-googlemaps-view/Pods-ios-googlemaps-view.debug.xcconfig"; sourceTree = "<group>"; };
 		CE6FA53D219214A1007404C4 /* ios-googlemaps-view.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-googlemaps-view.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6FA540219214A1007404C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE6FA542219214A1007404C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE6FA542219214A1007404C4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CE6FA545219214A1007404C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE6FA547219214A6007404C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6FA54A219214A6007404C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 			children = (
 				CEA61ECF219E757200D7B396 /* ev-charge-20.png */,
 				CE6FA540219214A1007404C4 /* AppDelegate.swift */,
-				CE6FA542219214A1007404C4 /* ViewController.swift */,
+				CE6FA542219214A1007404C4 /* MapViewController.swift */,
 				CE6FA544219214A1007404C4 /* Main.storyboard */,
 				CE6FA547219214A6007404C4 /* Assets.xcassets */,
 				CE6FA549219214A6007404C4 /* LaunchScreen.storyboard */,
@@ -216,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6FA543219214A1007404C4 /* ViewController.swift in Sources */,
+				CE6FA543219214A1007404C4 /* MapViewController.swift in Sources */,
 				CE6FA541219214A1007404C4 /* AppDelegate.swift in Sources */,
 				0B931564219BC705003D6263 /* MapData.xcdatamodeld in Sources */,
 				0B93156D219BE490003D6263 /* JsonUtils.swift in Sources */,

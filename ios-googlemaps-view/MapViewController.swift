@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  ios-googlemaps-view
 //
 //  Created by User on 2018-11-06.
@@ -11,7 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import CoreData
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
 
 
     @IBOutlet weak var zoomOutButton: UIButton!
@@ -180,7 +180,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController : CLLocationManagerDelegate {
+extension MapViewController : CLLocationManagerDelegate {
     
     
     // Handle incoming location events.
