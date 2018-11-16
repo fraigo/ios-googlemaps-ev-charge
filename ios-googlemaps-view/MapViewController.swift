@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     var zoom : Float = 15.0
     var marker = GMSMarker()
     var locations: [NSManagedObject] = []
+    var placesEv = NSArray()
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -30,6 +31,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         locationButton.isEnabled = false
+        mapView.delegate = self
         
         // Create a location
         let location2D = CLLocationCoordinate2D(latitude: 49.281, longitude: -123.121)
@@ -71,10 +73,17 @@ class MapViewController: UIViewController {
             
             do {
                 locations = try managedContext.fetch(fetchRequest)
-                if (locations.count==0){
-                    createCoreData()
-                    locations = try managedContext.fetch(fetchRequest)
+                placesEv = arrayFromJsonFromFile(name: "opencharge")
+                if (locations.count != placesEv.count){
+                    print("Reloading with new locations")
+                    for location in locations {
+                        managedContext.delete(location)
+                    }
+                    locations.removeAll()
                 }
+                createCoreDataOpenCharge(placesEv: placesEv)
+                locations = try managedContext.fetch(fetchRequest)
+            
                 loadPlaces(locations)
             } catch let error as NSError {
                 print("Could not fetch. \(error), \(error.userInfo)")
@@ -82,21 +91,41 @@ class MapViewController: UIViewController {
         }
     }
     
-    func createCoreData(){
-        
+    func createCoreDataOpenCharge(placesEv : NSArray){
+        var dropped=0
         if let managedContext = getViewContext(){
-            let placesEv = getJsonFromFile(name: "evcharge")
+            var position = 0
             for place in placesEv{
                 let p = place as! NSDictionary
                 let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedContext)!
+                position += 1
+                
+                if (p.isEmpty(key: "OperatorInfo")){
+                    dropped += 1
+                    continue
+                }
+                let operatorInfo = p.value(forKey: "OperatorInfo") as! NSDictionary
+                if (p.isEmpty(key: "AddressInfo")){
+                    dropped += 1
+                    continue
+                }
+                let addressInfo = p.value(forKey: "AddressInfo") as! NSDictionary
+                
+                //Extracting fields
+                let name = operatorInfo.safeString(forKey: "Title", defaultValue: "EV Charge")
+                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL")
+                let latitude = addressInfo.value(forKey: "Latitude") as! Double
+                let longitude = addressInfo.value(forKey: "Longitude") as! Double
+                
                 let newLocation = NSManagedObject(entity: entity, insertInto: managedContext)
-                let name = p.safeString(forKey: "LocationTag", defaultValue: "EV Charge")
-                let locName = p.safeString(forKey: "LocName", defaultValue: "No location descr.")
                 newLocation.setValue(name , forKeyPath:"name")
-                newLocation.setValue(p.value(forKey: "Lat") as! Double, forKeyPath:"latitude")
-                newLocation.setValue(p.value(forKey: "Long") as! Double, forKeyPath:"longitude")
+                newLocation.setValue(latitude, forKeyPath:"latitude")
+                newLocation.setValue(longitude, forKeyPath:"longitude")
                 newLocation.setValue("Electric Vehicle Charge", forKeyPath:"type")
                 newLocation.setValue(locName, forKeyPath:"desc")
+                newLocation.setValue(position-1, forKeyPath:"position")
+                
+                
                 do {
                     try managedContext.save()
                     locations.append(newLocation)
@@ -106,12 +135,13 @@ class MapViewController: UIViewController {
             }
             
         }
-        
+        print("Dropped \(dropped) locations")
         
     }
     
+    
     func loadPlaces(_ places: [NSManagedObject] ){
-        print("Loading places (\(places.count)")
+        print("Loading places (\(places.count))")
         let image = UIImage(named: "ev-charge-20.png")
         for place in places {
             let latitude = place.value(forKeyPath:"latitude") as! Double
@@ -122,6 +152,7 @@ class MapViewController: UIViewController {
             marker.snippet = (place.value(forKeyPath:"type") as? String)! + "\n" + (place.value(forKeyPath:"desc") as? String)!
             //marker.icon = GMSMarker.markerImage(with: UIColor.blue)
             marker.icon = image
+            marker.zIndex = place.value(forKey: "position") as! Int32
             marker.map = mapView
         }
     }
@@ -214,4 +245,15 @@ extension MapViewController : CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
+}
+
+
+extension MapViewController : GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print("Position \(marker.zIndex)")
+        print(placesEv.object(at: Int(marker.zIndex)))
+        return false
+    }
+    
 }

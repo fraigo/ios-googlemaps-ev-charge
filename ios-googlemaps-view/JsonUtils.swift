@@ -9,7 +9,7 @@
 import UIKit
 
 
-func getJsonFromFile(name: String) -> NSArray{
+func arrayFromJsonFromFile(name: String) -> NSArray{
     do {
         if let filepath = Bundle.main.path(forResource: name, ofType: "json") {
             let contents = try String(contentsOfFile: filepath)
@@ -80,6 +80,17 @@ extension NSDictionary {
             return result as! String
         }else{
             return defaultValue
+        }
+    }
+    
+    func isEmpty(key: String) -> Bool{
+        if let result=self.value(forKey: key){
+            if (result is NSNull){
+                return true
+            }
+            return false
+        }else{
+            return true
         }
     }
 }
