@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,42 +26,48 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XW1-Gt-7PQ">
-                                        <rect key="frame" x="115" y="577" width="144" height="30"/>
+                                        <rect key="frame" x="115.5" y="577" width="144" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCg-RE-ZNi">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
                                                 <state key="normal" title="Select Location Type"/>
-                                                <connections>
-                                                    <segue destination="uKw-GF-e6K" kind="popoverPresentation" popoverAnchorView="vCg-RE-ZNi" id="dRf-ig-qhp">
-                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                    </segue>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="7WO-hX-mit">
-                                        <rect key="frame" x="315" y="409" width="40" height="88"/>
+                                        <rect key="frame" x="315" y="336" width="40" height="161"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xl3-vo-cdn">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="s8A-K2-3s0"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                 <state key="normal" title=" + "/>
                                                 <connections>
                                                     <action selector="zoomClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mTu-sZ-va4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMG-Vo-iAO">
-                                                <rect key="frame" x="0.0" y="47" width="40" height="41"/>
+                                                <rect key="frame" x="0.0" y="55" width="40" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="rSw-a6-B4c"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                 <state key="normal" title=" - "/>
                                                 <connections>
                                                     <action selector="zoomClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J2W-rZ-qsM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krG-0g-0wP" userLabel="-">
+                                                <rect key="frame" x="0.0" y="110" width="40" height="51"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="nbW-lX-lnA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <state key="normal" title="◉"/>
+                                                <connections>
+                                                    <action selector="zoomClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="msW-TK-QEm"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -90,6 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="locationButton" destination="krG-0g-0wP" id="Mr8-nr-AoF"/>
                         <outlet property="mapView" destination="ntj-Vt-dww" id="MeO-UY-e3u"/>
                         <outlet property="zoomInButton" destination="Xl3-vo-cdn" id="MFj-T1-Nfn"/>
                         <outlet property="zoomOutButton" destination="oMG-Vo-iAO" id="ZgO-fk-Dd5"/>
@@ -98,34 +105,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="228" y="18"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="LiR-6Z-4eT">
-            <objects>
-                <tableViewController id="uKw-GF-e6K" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ps9-S6-Aml">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dLI-F1-FD4">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dLI-F1-FD4" id="vTV-oQ-fK4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="uKw-GF-e6K" id="xGM-Oz-wsK"/>
-                            <outlet property="delegate" destination="uKw-GF-e6K" id="v1Y-E6-o7m"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g0S-AO-ICN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="871" y="43"/>
         </scene>
     </scenes>
 </document>

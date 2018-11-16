@@ -15,6 +15,7 @@
 		CE6FA546219214A1007404C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA544219214A1007404C4 /* Main.storyboard */; };
 		CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA547219214A6007404C4 /* Assets.xcassets */; };
 		CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA549219214A6007404C4 /* LaunchScreen.storyboard */; };
+		CEA61ED0219E757300D7B396 /* ev-charge-20.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA61ECF219E757200D7B396 /* ev-charge-20.png */; };
 		CFC692C0B95279DD5033167B /* Pods_ios_googlemaps_view.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD931FFDCA47D132A446419 /* Pods_ios_googlemaps_view.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		CE6FA547219214A6007404C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6FA54A219214A6007404C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE6FA54C219214A6007404C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA61ECF219E757200D7B396 /* ev-charge-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ev-charge-20.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		CE6FA53F219214A1007404C4 /* ios-googlemaps-view */ = {
 			isa = PBXGroup;
 			children = (
+				CEA61ECF219E757200D7B396 /* ev-charge-20.png */,
 				CE6FA540219214A1007404C4 /* AppDelegate.swift */,
 				CE6FA542219214A1007404C4 /* ViewController.swift */,
 				CE6FA544219214A1007404C4 /* Main.storyboard */,
@@ -160,6 +163,7 @@
 				CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */,
 				CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */,
 				CE6FA546219214A1007404C4 /* Main.storyboard in Resources */,
+				CEA61ED0219E757300D7B396 /* ev-charge-20.png in Resources */,
 				0B93156F219BEDFC003D6263 /* evcharge.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

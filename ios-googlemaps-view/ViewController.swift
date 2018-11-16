@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
 
     @IBOutlet weak var zoomOutButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var zoomInButton: UIButton!
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -27,6 +28,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationButton.isEnabled = false
         
         // Create a location
         let location2D = CLLocationCoordinate2D(latitude: 49.281, longitude: -123.121)
@@ -109,15 +112,16 @@ class ViewController: UIViewController {
     
     func loadPlaces(_ places: [NSManagedObject] ){
         print("Loading places (\(places.count)")
+        let image = UIImage(named: "ev-charge-20.png")
         for place in places {
             let latitude = place.value(forKeyPath:"latitude") as! Double
             let longitude = place.value(forKeyPath:"longitude") as! Double
-            print("Place \(place) \(latitude):\(longitude)")
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             marker.title = place.value(forKeyPath:"name") as? String
             marker.snippet = (place.value(forKeyPath:"type") as? String)! + "\n" + (place.value(forKeyPath:"desc") as? String)!
-            marker.icon = GMSMarker.markerImage(with: UIColor.blue)
+            //marker.icon = GMSMarker.markerImage(with: UIColor.blue)
+            marker.icon = image
             marker.map = mapView
         }
     }
@@ -164,6 +168,12 @@ class ViewController: UIViewController {
             self.zoom -= 1
             self.mapView.animate(toZoom: self.zoom)
         }
+        if (sender.isEqual(locationButton)){
+            if let location = self.currentLocation {
+                self.updateLocation(location)
+            }
+            
+        }
     }
 
 
@@ -178,6 +188,7 @@ extension ViewController : CLLocationManagerDelegate {
         let location: CLLocation = locations.last!
         print("New location: \(location)")
         currentLocation = location
+        locationButton.isEnabled = true
         updateLocation(location)
     }
     
