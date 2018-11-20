@@ -7,6 +7,9 @@ Google Maps Current Location Viewer
 * Full screen Google Maps view
 * Detect current location
 * Detect current place
+* Get location info
+* Link to Map navigation
+* Link to website
 
 ## Components used
 
@@ -15,6 +18,12 @@ Google Maps Current Location Viewer
   * Google Maps Marker (`GMSMarker`)
   * Google Places Client (`GMSPlacesClient`)
   * iOS Location API (`CLLocationManager`, `CLLocation`)
+  
+  ## Screenshots
+  
+!()[screenshotsev-charge-map.png]
+
+!()[screenshotsev-charge-info.png]
 
 
 ## Usage

@@ -113,7 +113,7 @@ class MapViewController: UIViewController {
                 
                 //Extracting fields
                 let name = operatorInfo.safeString(forKey: "Title", defaultValue: "EV Charge")
-                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL")
+                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL") + "\n" + addressInfo.safeString(forKey: "AddressLine1", defaultValue: "No URL")
                 let latitude = addressInfo.value(forKey: "Latitude") as! Double
                 let longitude = addressInfo.value(forKey: "Longitude") as! Double
                 
