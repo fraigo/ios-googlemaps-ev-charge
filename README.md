@@ -21,9 +21,9 @@ Google Maps Current Location Viewer
   
   ## Screenshots
   
-!()[screenshotsev-charge-map.png]
+![](screenshots/ev-charge-map.png)
 
-!()[screenshotsev-charge-info.png]
+![](screenshots/ev-charge-info.png)
 
 
 ## Usage
