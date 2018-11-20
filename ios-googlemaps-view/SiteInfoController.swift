@@ -26,17 +26,33 @@ class SiteInfoController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     
+ 
+    @IBAction func urlClick(_ sender: Any) {
+        if let url = webLabel.text {
+            if (url == "-"){
+                return
+            }
+            UIApplication.shared.open(NSURL(string:url)! as URL)
+        }
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let size = UIScreen.main.bounds
+        if (size.width>size.height){
+            stackView.axis = .horizontal
+        }else{
+            stackView.axis = .vertical
+        }
+    }
+    
     @IBAction func onOpenMapClick(_ sender: Any) {
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
         
         let regionSpan =   MKCoordinateRegion(center: coordinates, latitudinalMeters: 100, longitudinalMeters: 100)
-        
         let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-        
         let mapItem = MKMapItem(placemark: placemark)
-        
         mapItem.name = siteTitle.text
-        
         mapItem.openInMaps(launchOptions:[
         MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center)
         ] as [String : Any])
@@ -46,9 +62,26 @@ class SiteInfoController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print(info)
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setContent()
+        setMapLocation()
+        setMarker()
+    }
+    
+    func setContent(){
+        // Do any additional setup after loading the view.
+        siteTitle.text = info.safeString(forKey: "OperatorInfo.Title", defaultValue: "-")
+        addressLabel.text = info.safeString(forKey: "AddressInfo.AddressLine1", defaultValue: "-")
+        webLabel.text = info.safeString(forKey: "OperatorInfo.WebsiteURL", defaultValue: "-")
+        phoneLabel.text = info.safeString(forKey: "AddressInfo.ContactTelephone1", defaultValue: "-")
+    }
+    
+    func setMapLocation(){
         // Create a location
         let location2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         // Create a camera view
@@ -56,26 +89,15 @@ class SiteInfoController: UIViewController {
         mapView.mapType =  .satellite
         // Locate in map
         mapView.animate(to: camera)
-        
-        // Do any additional setup after loading the view.
-        siteTitle.text = info.safeString(forKey: "OperatorInfo.Title", defaultValue: "No name")
-        
-        addressLabel.text = info.safeString(forKey: "AddressInfo.AddressLine1", defaultValue: "No address")
-        
-        webLabel.text = info.safeString(forKey: "OperatorInfo.WebsiteURL", defaultValue: "No web site")
-        
-        phoneLabel.text = info.safeString(forKey: "AddressInfo.ContactTelephone1", defaultValue: "No phone number")
-        
+    }
+    
+    func setMarker(){
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         marker.title = siteTitle.text
         marker.snippet = addressLabel.text
         marker.icon = GMSMarker.markerImage(with: UIColor.green)
         marker.map = mapView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     @IBAction func onClick(_ sender: Any) {

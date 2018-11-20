@@ -252,20 +252,27 @@ extension MapViewController : CLLocationManagerDelegate {
 extension MapViewController : GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
+        if (marker.isEqual(self.marker)){
+            
+        }
         return false
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("Position \(marker.zIndex)")
-        let place = placesEv.object(at: Int(marker.zIndex)) as! NSDictionary
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "SiteInfo") as! SiteInfoController
-        controller.info = place
-        controller.latitude = marker.position.latitude
-        controller.longitude = marker.position.longitude
-        controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(controller, animated: true, completion: nil)
+        
+        if (!marker.isEqual(self.marker)){
+       
+            print("Position \(marker.zIndex)")
+            let place = placesEv.object(at: Int(marker.zIndex)) as! NSDictionary
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SiteInfo") as! SiteInfoController
+            controller.info = place
+            controller.latitude = marker.position.latitude
+            controller.longitude = marker.position.longitude
+            controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            self.present(controller, animated: true, completion: nil)
+        }
+        
     }
     
     
