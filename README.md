@@ -22,7 +22,6 @@ Google Maps Current Location Viewer
   ## Screenshots
   
 ![](screenshots/ev-charge-map.png)
-
 ![](screenshots/ev-charge-info.png)
 
 
