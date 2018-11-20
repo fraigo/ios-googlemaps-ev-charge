@@ -1,13 +1,15 @@
 # ios-googlemaps-view
-Google Maps Current Location Viewer
+Electric Vehicle Charger Location Viewer using Google Maps 
 
 
 ## Features
 
 * Full screen Google Maps view
-* Detect current location
-* Detect current place
-* Get location info
+* Detects current location
+* Detects current place
+* Controls: Zoom In / Zoom out / Current location
+* Shows markers for nearer EV charge stations
+* Gets location info
 * Link to Map navigation
 * Link to website
 
