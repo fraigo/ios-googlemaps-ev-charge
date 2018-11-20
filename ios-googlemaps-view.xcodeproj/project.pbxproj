@@ -14,6 +14,8 @@
 		CE6FA546219214A1007404C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA544219214A1007404C4 /* Main.storyboard */; };
 		CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA547219214A6007404C4 /* Assets.xcassets */; };
 		CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6FA549219214A6007404C4 /* LaunchScreen.storyboard */; };
+		CE7F1F7821A3B2300009A923 /* SiteInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F1F7721A3B2300009A923 /* SiteInfoController.swift */; };
+		CE7F1F7C21A3C8E80009A923 /* evcharge-transp.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F1F7B21A3C8E80009A923 /* evcharge-transp.png */; };
 		CEA61ED0219E757300D7B396 /* ev-charge-20.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA61ECF219E757200D7B396 /* ev-charge-20.png */; };
 		CEA61ED2219E7A8100D7B396 /* opencharge.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA61ED1219E7A8100D7B396 /* opencharge.json */; };
 		CEF10902219E7BBD005DFDAC /* ev-charge.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF10901219E7BBD005DFDAC /* ev-charge.png */; };
@@ -33,6 +35,8 @@
 		CE6FA547219214A6007404C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6FA54A219214A6007404C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE6FA54C219214A6007404C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7F1F7721A3B2300009A923 /* SiteInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteInfoController.swift; sourceTree = "<group>"; };
+		CE7F1F7B21A3C8E80009A923 /* evcharge-transp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "evcharge-transp.png"; sourceTree = "<group>"; };
 		CEA61ECF219E757200D7B396 /* ev-charge-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ev-charge-20.png"; sourceTree = "<group>"; };
 		CEA61ED1219E7A8100D7B396 /* opencharge.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = opencharge.json; sourceTree = "<group>"; };
 		CEF10901219E7BBD005DFDAC /* ev-charge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ev-charge.png"; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		CE6FA53F219214A1007404C4 /* ios-googlemaps-view */ = {
 			isa = PBXGroup;
 			children = (
+				CE7F1F7B21A3C8E80009A923 /* evcharge-transp.png */,
 				CEA61ECF219E757200D7B396 /* ev-charge-20.png */,
 				CEF10901219E7BBD005DFDAC /* ev-charge.png */,
 				CE6FA540219214A1007404C4 /* AppDelegate.swift */,
@@ -99,6 +104,7 @@
 				0B931562219BC705003D6263 /* MapData.xcdatamodeld */,
 				0B93156C219BE490003D6263 /* JsonUtils.swift */,
 				CEA61ED1219E7A8100D7B396 /* opencharge.json */,
+				CE7F1F7721A3B2300009A923 /* SiteInfoController.swift */,
 			);
 			path = "ios-googlemaps-view";
 			sourceTree = "<group>";
@@ -163,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7F1F7C21A3C8E80009A923 /* evcharge-transp.png in Resources */,
 				CE6FA54B219214A6007404C4 /* LaunchScreen.storyboard in Resources */,
 				CEA61ED2219E7A8100D7B396 /* opencharge.json in Resources */,
 				CE6FA548219214A6007404C4 /* Assets.xcassets in Resources */,
@@ -224,6 +231,7 @@
 				CE6FA541219214A1007404C4 /* AppDelegate.swift in Sources */,
 				0B931564219BC705003D6263 /* MapData.xcdatamodeld in Sources */,
 				0B93156D219BE490003D6263 /* JsonUtils.swift in Sources */,
+				CE7F1F7821A3B2300009A923 /* SiteInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

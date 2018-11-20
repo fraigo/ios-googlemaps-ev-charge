@@ -149,7 +149,8 @@ class MapViewController: UIViewController {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             marker.title = place.value(forKeyPath:"name") as? String
-            marker.snippet = (place.value(forKeyPath:"type") as? String)! + "\n" + (place.value(forKeyPath:"desc") as? String)!
+            marker.snippet = (place.value(forKeyPath:"type") as? String)! + "\n" + (place.value(forKeyPath:"desc") as? String)! + "\n" +
+                "(Click here for more information)"
             //marker.icon = GMSMarker.markerImage(with: UIColor.blue)
             marker.icon = image
             marker.zIndex = place.value(forKey: "position") as! Int32
@@ -251,9 +252,21 @@ extension MapViewController : CLLocationManagerDelegate {
 extension MapViewController : GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("Position \(marker.zIndex)")
-        print(placesEv.object(at: Int(marker.zIndex)))
+        
         return false
     }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("Position \(marker.zIndex)")
+        let place = placesEv.object(at: Int(marker.zIndex)) as! NSDictionary
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SiteInfo") as! SiteInfoController
+        controller.info = place
+        controller.latitude = marker.position.latitude
+        controller.longitude = marker.position.longitude
+        controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     
 }

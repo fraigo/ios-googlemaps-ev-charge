@@ -73,7 +73,7 @@ func parseDictionary(data: Data, key: String, items: String) -> NSArray {
 extension NSDictionary {
     
     func safeString(forKey: String, defaultValue: String) -> String{
-        if let result=self.value(forKey: forKey){
+        if let result=self.value(forKeyPath: forKey){
             if (result is NSNull){
                 return defaultValue
             }
