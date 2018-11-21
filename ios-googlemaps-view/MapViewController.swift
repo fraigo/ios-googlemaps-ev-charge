@@ -137,7 +137,7 @@ class MapViewController: UIViewController {
                 let distance = addressInfo.value(forKey: "Distance") as! Double
                 //Extracting fields
                 let name = operatorInfo.safeString(forKey: "Title", defaultValue: "EV Charge")
-                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL") + "\n" + addressInfo.safeString(forKey: "AddressLine1", defaultValue: "No URL") + "\nDistance: " + String(floor(distance*10)/10.0) + "Km. "
+                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL") + "\n" + addressInfo.safeString(forKey: "AddressLine1", defaultValue: "No URL") + "\nDistance: " + formatNumber(number: distance) + "Km. "
                 
                 let latitude = addressInfo.value(forKey: "Latitude") as! Double
                 let longitude = addressInfo.value(forKey: "Longitude") as! Double
