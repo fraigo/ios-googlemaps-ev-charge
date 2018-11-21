@@ -83,8 +83,9 @@ class SiteInfoController: UIViewController {
     
     func setContent(){
         // Do any additional setup after loading the view.
+        let distance = info.value(forKeyPath: "AddressInfo.Distance") as! Double
         siteTitle.text = info.safeString(forKey: "OperatorInfo.Title", defaultValue: "-")
-        addressLabel.text = info.safeString(forKey: "AddressInfo.AddressLine1", defaultValue: "-")
+        addressLabel.text = info.safeString(forKey: "AddressInfo.AddressLine1", defaultValue: "-") + " (" + formatNumber(number: distance) + " Km.)"
         webLabel.text = info.safeString(forKey: "OperatorInfo.WebsiteURL", defaultValue: "-")
         phoneLabel.text = info.safeString(forKey: "AddressInfo.ContactTelephone1", defaultValue: "-")
     }

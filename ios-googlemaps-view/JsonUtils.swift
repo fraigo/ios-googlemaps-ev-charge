@@ -69,6 +69,10 @@ func parseDictionary(data: Data, key: String, items: String) -> NSArray {
     return NSArray()
 }
 
+func formatNumber( number: Double) -> String{
+    return String( floor(number/10) * 10.0)
+}
+
 
 extension NSDictionary {
     
