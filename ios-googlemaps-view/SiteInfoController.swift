@@ -31,7 +31,7 @@ class SiteInfoController: UIViewController {
             if (phone == "-"){
                 return
             }
-            UIApplication.shared.open(NSURL(string:"tel://\(phone)")! as URL)
+            UIApplication.shared.open(NSURL(string:"telprompt://\(phone)")! as URL)
         }
     }
     
