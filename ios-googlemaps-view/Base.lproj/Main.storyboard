@@ -121,60 +121,67 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="315.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site Information" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-Ph-2KN">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yy-dx-QGQ">
-                                                <rect key="frame" x="0.0" y="35" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="31.5" width="375" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKR-Cg-shu">
-                                                <rect key="frame" x="0.0" y="70" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="63" width="375" height="31.5"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyi-VV-EVP">
-                                                <rect key="frame" x="0.0" y="105" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="94.5" width="375" height="31.5"/>
                                                 <state key="normal" title="❐ Open in Maps"/>
                                                 <connections>
                                                     <action selector="onOpenMapClick:" destination="1oA-ex-7dM" eventType="touchUpInside" id="pN8-mP-G3R"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Web Site" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZQ-7P-Nfx">
-                                                <rect key="frame" x="0.0" y="140" width="375" height="35.5"/>
+                                                <rect key="frame" x="0.0" y="126" width="375" height="32"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOd-9f-dJ2">
-                                                <rect key="frame" x="0.0" y="175.5" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="158" width="375" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsV-mT-TTC">
-                                                <rect key="frame" x="0.0" y="210.5" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="189.5" width="375" height="31.5"/>
                                                 <state key="normal" title="❐ Open in browser"/>
                                                 <connections>
                                                     <action selector="urlClick:" destination="1oA-ex-7dM" eventType="touchUpInside" id="H0l-j1-xQx"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAk-co-JrY">
-                                                <rect key="frame" x="0.0" y="245.5" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="221" width="375" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2N-zt-ZXB">
-                                                <rect key="frame" x="0.0" y="280.5" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="252.5" width="375" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onh-6W-oI6">
+                                                <rect key="frame" x="0.0" y="284" width="375" height="31.5"/>
+                                                <state key="normal" title="📞 Call"/>
+                                                <connections>
+                                                    <action selector="onCallClick:" destination="1oA-ex-7dM" eventType="touchUpInside" id="Tt9-Eh-4aU"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PrS-aD-d3z">

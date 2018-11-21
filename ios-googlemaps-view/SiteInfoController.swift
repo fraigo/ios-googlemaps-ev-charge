@@ -26,7 +26,15 @@ class SiteInfoController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     
- 
+    @IBAction func onCallClick(_ sender: Any) {
+        if let phone = phoneLabel.text {
+            if (phone == "-"){
+                return
+            }
+            UIApplication.shared.open(NSURL(string:"tel://\(phone)")! as URL)
+        }
+    }
+    
     @IBAction func urlClick(_ sender: Any) {
         if let url = webLabel.text {
             if (url == "-"){

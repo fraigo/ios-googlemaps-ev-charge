@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     var marker = GMSMarker()
     var locations: [NSManagedObject] = []
     var placesEv = NSArray()
+    var currentMarkers: [GMSMarker] = []
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -54,7 +55,31 @@ class MapViewController: UIViewController {
         // places client
         placesClient = GMSPlacesClient.shared()
         
-        loadCoreData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    func ApiURL(location: CLLocation) -> String{
+        let kms = 50
+        let results = 500
+        return "https://api.openchargemap.io/v2/poi/?output=json&maxresults=\(results)&latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)&distanceunit=KM&distance=\(kms)&verbose=false"
+    }
+    
+    func loadJsonData(){
+        if let location = currentLocation {
+            let url = ApiURL(location: location)
+            placesEv = arrayFromJsonFromFile(name: "opencharge")
+            getJsonFromUrl(url: url) { (data) in
+                self.placesEv = parseArray(data: data)
+                DispatchQueue.main.async{
+                    self.loadCoreData()
+                }
+                
+            }
+        }
         
     }
     
@@ -73,7 +98,6 @@ class MapViewController: UIViewController {
             
             do {
                 locations = try managedContext.fetch(fetchRequest)
-                placesEv = arrayFromJsonFromFile(name: "opencharge")
                 if (locations.count != placesEv.count){
                     print("Reloading with new locations")
                     for location in locations {
@@ -110,10 +134,11 @@ class MapViewController: UIViewController {
                     continue
                 }
                 let addressInfo = p.value(forKey: "AddressInfo") as! NSDictionary
-                
+                let distance = addressInfo.value(forKey: "Distance") as! Double
                 //Extracting fields
                 let name = operatorInfo.safeString(forKey: "Title", defaultValue: "EV Charge")
-                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL") + "\n" + addressInfo.safeString(forKey: "AddressLine1", defaultValue: "No URL")
+                let locName = operatorInfo.safeString(forKey: "WebsiteURL", defaultValue: "No URL") + "\n" + addressInfo.safeString(forKey: "AddressLine1", defaultValue: "No URL") + "\nDistance: " + String(floor(distance*10)/10.0) + "Km. "
+                
                 let latitude = addressInfo.value(forKey: "Latitude") as! Double
                 let longitude = addressInfo.value(forKey: "Longitude") as! Double
                 
@@ -143,6 +168,12 @@ class MapViewController: UIViewController {
     func loadPlaces(_ places: [NSManagedObject] ){
         print("Loading places (\(places.count))")
         let image = UIImage(named: "ev-charge-20.png")
+        for marker in currentMarkers {
+            let marker = marker as GMSMarker
+            marker.map = nil
+        }
+        currentMarkers.removeAll()
+        
         for place in places {
             let latitude = place.value(forKeyPath:"latitude") as! Double
             let longitude = place.value(forKeyPath:"longitude") as! Double
@@ -155,6 +186,7 @@ class MapViewController: UIViewController {
             marker.icon = image
             marker.zIndex = place.value(forKey: "position") as! Int32
             marker.map = mapView
+            currentMarkers.append(marker)
         }
     }
 
@@ -170,6 +202,7 @@ class MapViewController: UIViewController {
         marker.title = "Current location"
         marker.snippet = "\(location.coordinate.latitude) : \(location.coordinate.longitude)"
         marker.map = mapView
+        marker.zIndex = 10000
         
         // detect places
         placesClient.currentPlace { (list, error) in
@@ -189,6 +222,8 @@ class MapViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.mapView.animate(toZoom: self.zoom + 1.0)
         }
+        
+        self.loadJsonData()
     }
     
     @IBAction func zoomClick(_ sender: UIButton) {
@@ -273,6 +308,10 @@ extension MapViewController : GMSMapViewDelegate {
             self.present(controller, animated: true, completion: nil)
         }
         
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("Tap at \(coordinate)")
     }
     
     
